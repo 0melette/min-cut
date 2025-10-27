@@ -19,9 +19,11 @@ TEST(MinCutAlgorithms, FourVertexCycle) {
 
     Graph kargerGraph = graph;
     double kargerResult = karger(kargerGraph);
+    std::cerr << "Karger result: " << kargerResult << std::endl;
     EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
     
     Graph stoerWagnerGraph = graph;
     double stoerWagnerResult = stoerWagner(stoerWagnerGraph);
+    std::cerr << "Stoer-Wagner result: " << stoerWagnerResult << std::endl;
     EXPECT_DOUBLE_EQ(stoerWagnerResult, expectedMinCut);
 }
