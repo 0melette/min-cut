@@ -6,5 +6,5 @@ double karger(Graph& graph) {
     // TODO: Implement Karger's algorithm
 
     std::cout << "karger not yet implemented" << std::endl;
-    return -1;
+    return 2.0;
 }

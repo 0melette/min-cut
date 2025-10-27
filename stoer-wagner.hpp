@@ -1,3 +1,3 @@
 #include "graph.hpp"
 
-double StoerWagner(Graph& graph);
+double stoerWagner(Graph& graph);
