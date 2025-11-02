@@ -1,1 +1,1 @@
-g++ -std=c++20 -I. -I/opt/homebrew/opt/googletest/include main.cpp graph.cpp karger.cpp stoer-wagner.cpp -o mincut -L/opt/homebrew/opt/googletest/lib -lgtest -lgtest_main -pthread
+g++ -std=c++20 -isystem /usr/include/gtest -pthread *.cpp -lgtest -lgtest_main -o test -fsanitize=address && ./test
