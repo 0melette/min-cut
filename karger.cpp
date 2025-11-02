@@ -46,9 +46,14 @@ double kargerSingleRun(const Graph& originalGraph) {
 
     // contraction loop
     int active = n;
+
+    // better random - each thread has its own generator - good for parallel runs
+    static thread_local std::mt19937 gen(std::random_device{}());
+    std::uniform_int_distribution<int> dist(0, edges.size() - 1);
+
     while (active > 2) { // keep contracting until 2 super-vertices remain
         // randomly select an edge
-       int randomIndex = rand() % edges.size();
+        int randomIndex = dist(gen);
         Graph::Edge e = edges[randomIndex];
 
         // use the find function to get super-vertices
