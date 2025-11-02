@@ -27,9 +27,6 @@ double kargerSingleRun(const Graph& originalGraph) {
     // convert set  to vector for random access O(1)
     std::vector<Graph::Edge> edges(uniqueEdges.begin(), uniqueEdges.end());
 
-    // random number generator - using mersenne twister
-    std::random_device rd;
-    std::mt19937 gen(rd());
 
     // union-find structure to track super-vertices
     // each vertex starts in its own set
@@ -39,6 +36,7 @@ double kargerSingleRun(const Graph& originalGraph) {
     }
 
     // find the super-vertex the vertex v belongs to
+    // o(n) path compression not implemented  :p
     auto find = [&](int v) {
         while (parent[v] != v) {
             v = parent[v];
@@ -48,20 +46,21 @@ double kargerSingleRun(const Graph& originalGraph) {
 
     // contraction loop
     int active = n;
-    while (active > 2) {
+    while (active > 2) { // keep contracting until 2 super-vertices remain
         // randomly select an edge
        int randomIndex = rand() % edges.size();
         Graph::Edge e = edges[randomIndex];
 
+        // use the find function to get super-vertices
         int u = find(e.v1);
         int v = find(e.v2);
         
-        // skip self loop
+        // skip self loop (edge in the same super-vertex)
         if (u == v) {
             continue;
         }
 
-        // contract -  merge v into u
+        // contract -  merge v into u and then update parent
         for (int i = 0; i < n; i++) {
             if (parent[i] == v) {
                 parent[i] = u;
@@ -71,10 +70,11 @@ double kargerSingleRun(const Graph& originalGraph) {
         active--;
     }
 
-    // calculate cut weight
+    // calculate cut weight - adding weights of edges in between the two super-vertices
+    // total - O(En)
     double cutWeight = 0.0;
-    for (const auto& e : edges) {
-        int u = find(e.v1);
+    for (const auto& e : edges) { // o(e) 
+        int u = find(e.v1);  // both find calls are o(n) worst case
         int v = find(e.v2);
         if (u != v) {
             cutWeight += e.weight;
@@ -93,10 +93,10 @@ double karger(Graph& graph) {
 
     // number of iterations to increase probability of finding min cut
     // each run is 1/n^2 chance of finding min cut
-    int iterations = std::max(50, n * n);
+    int iterations = std::max(50, n * n); // minimum of 50 for small graphs
     double minCut = std::numeric_limits<double>::infinity();
 
-    // take the best cut found over all iterations
+    // take the best cut found over all iterations (the minimum)
     for (int i = 0; i < iterations; i++) {
         minCut = std::min(minCut, kargerSingleRun(graph));
     }
