@@ -256,8 +256,8 @@ TEST(MinCutAlgorithms, SelfLoop) {
     double expectedMinCut = 2.0;
 
     Graph kargerGraph = graph;
-    // double kargerResult = karger(kargerGraph);
-    // EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
+    double kargerResult = karger(kargerGraph);
+    EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
 
     Graph stoerWagnerGraph = graph;
     double stoerWagnerResult = stoerWagner(stoerWagnerGraph);
