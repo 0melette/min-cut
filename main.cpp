@@ -26,8 +26,8 @@ TEST(MinCutAlgorithms, SimpleCycle) {
     double expectedMinCut = 2.0;
 
     Graph kargerGraph = graph;
-    // double kargerResult = karger(kargerGraph);
-    // EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
+    double kargerResult = karger(kargerGraph);
+    EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
 
     Graph stoerWagnerGraph = graph;
     double stoerWagnerResult = stoerWagner(stoerWagnerGraph);
@@ -45,8 +45,8 @@ TEST(MinCutAlgorithms, LargeSimpleCycle) {
     Graph graph(n, edges);
 
     Graph kargerGraph = graph;
-    // double kargerResult = karger(kargerGraph);
-    // EXPECT_DOUBLE_EQ(kargerResult, 2);
+    double kargerResult = karger(kargerGraph);
+    EXPECT_DOUBLE_EQ(kargerResult, 2);
 
     Graph stoerWagnerGraph = graph;
     double stoerWagnerResult = stoerWagner(stoerWagnerGraph);
@@ -70,8 +70,8 @@ TEST(MinCutAlgorithms, WeightedSimpleCycle) {
     double expectedMinCut = 5.0;
 
     Graph kargerGraph = graph;
-    // double kargerResult = karger(kargerGraph);
-    // EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
+    double kargerResult = karger(kargerGraph);
+    EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
 
     Graph stoerWagnerGraph = graph;
     double stoerWagnerResult = stoerWagner(stoerWagnerGraph);
@@ -92,8 +92,8 @@ TEST(MinCutAlgorithms, PathGraph) {
     double expectedMinCut = 1.0;  // Any cut will split it fine
 
     Graph kargerGraph = graph;
-    // double kargerResult = karger(kargerGraph);
-    // EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
+    double kargerResult = karger(kargerGraph);
+    EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
 
     Graph stoerWagnerGraph = graph;
     double stoerWagnerResult = stoerWagner(stoerWagnerGraph);
@@ -114,8 +114,8 @@ TEST(MinCutAlgorithms, WeightedPathGraph) {
     double expectedMinCut = 2.0;  // Split the lightest edge
 
     Graph kargerGraph = graph;
-    // double kargerResult = karger(kargerGraph);
-    // EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
+    double kargerResult = karger(kargerGraph);
+    EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
 
     Graph stoerWagnerGraph = graph;
     double stoerWagnerResult = stoerWagner(stoerWagnerGraph);
@@ -138,8 +138,8 @@ TEST(MinCutAlgorithms, StarGraph) {
     double expectedMinCut = 1.0;  // Cut off any single spoke
 
     Graph kargerGraph = graph;
-    // double kargerResult = karger(kargerGraph);
-    // EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
+    double kargerResult = karger(kargerGraph);
+    EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
 
     Graph stoerWagnerGraph = graph;
     double stoerWagnerResult = stoerWagner(stoerWagnerGraph);
@@ -160,8 +160,8 @@ TEST(MinCutAlgorithms, CompleteGraphK5) {
     double expectedMinCut = 4.0;  // To isolate one vertex you must cut off n-1 edges
 
     Graph kargerGraph = graph;
-    // double kargerResult = karger(kargerGraph);
-    // EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
+    double kargerResult = karger(kargerGraph);
+    EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
 
     Graph stoerWagnerGraph = graph;
     double stoerWagnerResult = stoerWagner(stoerWagnerGraph);
@@ -188,8 +188,8 @@ TEST(MinCutAlgorithms, DumbbellGraph) {
     double expectedMinCut = 1.0;  // Cut the bar
 
     Graph kargerGraph = graph;
-    // double kargerResult = karger(kargerGraph);
-    // EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
+    double kargerResult = karger(kargerGraph);
+    EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
 
     Graph stoerWagnerGraph = graph;
     double stoerWagnerResult = stoerWagner(stoerWagnerGraph);
@@ -197,21 +197,19 @@ TEST(MinCutAlgorithms, DumbbellGraph) {
 }
 
 // Broken rn
-// // Test 6A - Graph from test6a.txt
-// TEST(MinCutAlgorithms, GraphFromTest6A) {
-//     // Assuming the Graph constructor can read from a file
-//     Graph graph("test6a.txt");
+// Test 6A - Graph from test6a.txt
+TEST(MinCutAlgorithms, GraphFromTest6A) {
+    Graph graph("test6a.txt");
 
-//     double expectedMinCut = 99;  // Replace with the actual expected min cut for the graph in test6a.txt
+    double expectedMinCut = 49;
+    Graph kargerGraph = graph;
+    double kargerResult = karger(kargerGraph);
+    EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
 
-//     Graph kargerGraph = graph;
-//     // double kargerResult = karger(kargerGraph);
-//     // EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
-
-//     Graph stoerWagnerGraph = graph;
-//     double stoerWagnerResult = stoerWagner(stoerWagnerGraph);
-//     EXPECT_DOUBLE_EQ(stoerWagnerResult, expectedMinCut);
-// }
+    Graph stoerWagnerGraph = graph;
+    double stoerWagnerResult = stoerWagner(stoerWagnerGraph);
+    EXPECT_DOUBLE_EQ(stoerWagnerResult, expectedMinCut);
+}
 
 // TEST 7 - Complete Bipartite Graph K3,3
 TEST(MinCutAlgorithms, CompleteBipartiteK33) {
@@ -228,8 +226,8 @@ TEST(MinCutAlgorithms, CompleteBipartiteK33) {
     double expectedMinCut = 3.0;  // Separate the two groups
 
     Graph kargerGraph = graph;
-    // double kargerResult = karger(kargerGraph);
-    // EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
+    double kargerResult = karger(kargerGraph);
+    EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
 
     Graph stoerWagnerGraph = graph;
     double stoerWagnerResult = stoerWagner(stoerWagnerGraph);
@@ -256,8 +254,8 @@ TEST(MinCutAlgorithms, SelfLoop) {
     double expectedMinCut = 2.0;
 
     Graph kargerGraph = graph;
-    // double kargerResult = karger(kargerGraph);
-    // EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
+    double kargerResult = karger(kargerGraph);
+    EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
 
     Graph stoerWagnerGraph = graph;
     double stoerWagnerResult = stoerWagner(stoerWagnerGraph);

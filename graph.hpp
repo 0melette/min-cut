@@ -9,7 +9,7 @@
 // Class for undirected graphs with edge weights
 class Graph {
 public:
-  struct Edge {
+  struct Edge { // struct is weught, v1, v2
     double weight{};
     int v1{};
     int v2{};
