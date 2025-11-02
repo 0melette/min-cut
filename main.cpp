@@ -197,21 +197,19 @@ TEST(MinCutAlgorithms, DumbbellGraph) {
 }
 
 // Broken rn
-// // Test 6A - Graph from test6a.txt
-// TEST(MinCutAlgorithms, GraphFromTest6A) {
-//     // Assuming the Graph constructor can read from a file
-//     Graph graph("test6a.txt");
+// Test 6A - Graph from test6a.txt
+TEST(MinCutAlgorithms, GraphFromTest6A) {
+    Graph graph("test6a.txt");
 
-//     double expectedMinCut = 99;  // Replace with the actual expected min cut for the graph in test6a.txt
+    double expectedMinCut = 99;
+    Graph kargerGraph = graph;
+    double kargerResult = karger(kargerGraph);
+    EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
 
-//     Graph kargerGraph = graph;
-//     // double kargerResult = karger(kargerGraph);
-//     // EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
-
-//     Graph stoerWagnerGraph = graph;
-//     double stoerWagnerResult = stoerWagner(stoerWagnerGraph);
-//     EXPECT_DOUBLE_EQ(stoerWagnerResult, expectedMinCut);
-// }
+    Graph stoerWagnerGraph = graph;
+    double stoerWagnerResult = stoerWagner(stoerWagnerGraph);
+    EXPECT_DOUBLE_EQ(stoerWagnerResult, expectedMinCut);
+}
 
 // TEST 7 - Complete Bipartite Graph K3,3
 TEST(MinCutAlgorithms, CompleteBipartiteK33) {

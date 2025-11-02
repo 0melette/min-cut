@@ -33,7 +33,7 @@ Graph::Graph(const std::string &inputFile) {
   int i{};
   int j{};
   double weight{};
-  // assume each remaining line is of form
+  // assume each remaining line is of form  -  lmao the file format is v1, v2, weight
   // origin dest weight
   while (infile >> i >> j >> weight) {
     addEdge({weight, i, j});
