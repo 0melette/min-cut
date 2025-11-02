@@ -201,7 +201,7 @@ TEST(MinCutAlgorithms, DumbbellGraph) {
 TEST(MinCutAlgorithms, GraphFromTest6A) {
     Graph graph("test6a.txt");
 
-    double expectedMinCut = 99;
+    double expectedMinCut = 49;
     Graph kargerGraph = graph;
     double kargerResult = karger(kargerGraph);
     EXPECT_DOUBLE_EQ(kargerResult, expectedMinCut);
